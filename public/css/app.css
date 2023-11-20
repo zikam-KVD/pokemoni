@@ -1,0 +1,15 @@
+table{
+    border: 1px solid black;
+}
+
+table tr:nth-child(1) {
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+background-color: rgba(49, 95, 95, 0.322);
+}
+
+table tr:nth-child(odd) {
+    background-color: rgba(27, 192, 96, 0.5);
+}
