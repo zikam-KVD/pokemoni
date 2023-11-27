@@ -39,8 +39,15 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                @if(isset($alert))
-                    <div> {{ $alert }}</div>
+                @if(true == Session::has('alert'))
+                    <div>
+                        <strong>{{ Session::get('alert') }}</strong>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
                 @endif
                 <table>
                     <tr>
@@ -68,13 +75,13 @@
                         <form method="POST" action="{{ route('pokemon-pridat') }}">
                             @csrf
                             <td>
-                                <input type="text" name="jmeno" required>
+                                <input type="text" name="jmeno" value="{{ old('jmeno')}}">
                             </td>
                             <td>
-                                <input type="number" name="mazlivost" min="1" max="9" required>
+                                <input type="number" name="mazlivost" value="{{ old('mazlivost')}}" min="1" max="10" required>
                             </td>
                             <td>
-                                <input type="number" name="velikost" min="1" max="9" required>
+                                <input type="number" name="velikost" value="{{ old('velikost')}}" min="1" max="10" required>
                             </td>
                             <td>
                                 <select name="typ">
